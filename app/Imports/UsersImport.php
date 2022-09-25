@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class UsersImport implements ToModel
+class UsersImport implements ToModel, WithStartRow, WithCustomCsvSettings
 {
     // mulai baca dari baris 2 (skip heading)
     public function startRow(): int

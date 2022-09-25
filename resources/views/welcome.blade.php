@@ -29,11 +29,12 @@
             <h1 class="fs-5 fw-bold text-center">Import & Export CSV in Laravel 8</h1>
             <div class="row">
                 <div class="d-flex my-2">
-                    <a href="" class="btn btn-primary me-1">Export Data</a>
+                    <a href="export-csv" target="_blank" class="btn btn-primary me-1">Export Data</a>
                     {{-- Munculin modal data-bs-toggle, Modal yang dimunculin data-bs-target --}}
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-success me-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Import Data
                     </button>
+                    <a href="delete-data" class="btn btn-danger">Delete Table Data</a>
                 </div>
 
                 @if (session('success'))

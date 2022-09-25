@@ -1,5 +1,7 @@
 <?php
 
+use App\Exports\UsersExport;
+use App\Http\Controllers\UserController;
 use App\Imports\UsersImport;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +31,12 @@ Route::post('import', function () {
 
     Excel::import(new UsersImport, request()->file('file'));
     return redirect()->back()->with('success', 'Data Imported Successfully');
+});
+
+Route::get('export-csv', function(){
+    return Excel::download(new UsersExport, 'users.csv');
+});
+
+Route::controller(UserController::class)->group(function() {
+    Route::get('delete-data', 'destroy');
 });
