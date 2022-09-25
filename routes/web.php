@@ -1,6 +1,9 @@
 <?php
 
+use App\Imports\UsersImport;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'users' => User::all()
+    ]);
+});
+
+Route::post('import', function () {
+    Excel::import(new UsersImport, request()->file('file'));
+    return redirect()->back()->with('success', 'Data Imported Successfully');
 });
