@@ -23,6 +23,10 @@ Route::get('/', function () {
 });
 
 Route::post('import', function () {
+    // Jika ingin menyimpan file ke dalam storage
+    // $fileName = time().'_'.request()->file('file')->getClientOriginalName();
+    // request()->file('file')->storeAs('reports', $fileName, 'public');
+
     Excel::import(new UsersImport, request()->file('file'));
     return redirect()->back()->with('success', 'Data Imported Successfully');
 });
